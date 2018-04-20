@@ -1,0 +1,31 @@
+$sides: (top, bottom, left, right, all);
+$increment: 5;
+$maxLevel: 100;
+$space: 0;
+
+@while $space < $maxLevel {
+  $space: $space + $increment;
+
+  @if $space % $increment == 0 {
+    @each $side in $sides {
+
+      @if $side == 'all' {
+        .m#{$space} {
+          margin: #{$space}px!important;
+        }
+
+        .p#{$space} {
+          padding: #{$space}px!important;
+        }
+      } @else {
+        .m#{str-slice($side, 0, 1)}#{$space} {
+          margin-#{$side}: #{$space}px!important;
+        }
+
+        .p#{str-slice($side, 0, 1)}#{$space} {
+          padding-#{$side}: #{$space}px!important;
+        }
+      }
+    }
+  }
+}

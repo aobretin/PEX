@@ -1,0 +1,16 @@
+<div>
+  <content-placeholders
+    :style="{...styles}"
+    :rounded="rounded"
+    :animated="animated"
+
+    class="content-placeholder"
+    v-if="!loadWhen"
+  >
+    <content-placeholders-img v-if="withImage" />
+    <content-placeholders-heading v-if="withHeading" :img="headingWithImage" />
+    <content-placeholders-text v-if="withText" :lines="lines" />
+  </content-placeholders>
+
+  <slot v-if="loadWhen" />
+</div>
