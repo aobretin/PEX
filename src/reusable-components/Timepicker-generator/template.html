@@ -1,0 +1,14 @@
+<div class="form-group" :class="timeParentClass">
+  <template v-if="timeLabel">
+    <label :for="timeName">{{timeLabel}}</label>
+  </template>
+
+  <el-time-select
+    class="form-control"
+    :id="timeName"
+    :name="timeName"
+    :ref="timeName"
+    :picker-options="timeConfig"
+    v-model="currentTime"
+  />
+</div>

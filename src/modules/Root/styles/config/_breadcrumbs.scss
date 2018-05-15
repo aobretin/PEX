@@ -1,0 +1,16 @@
+@import "general";
+
+// Breadcrumbs
+
+$breadcrumb-padding-y:              5px;
+$breadcrumb-padding-x:              10px;
+$breadcrumb-item-padding:           5px;
+
+$breadcrumb-margin-bottom:          10px;
+
+$breadcrumb-bg:                     color('black');
+$breadcrumb-divider-color:          color('white');
+$breadcrumb-active-color:           color('black');
+$breadcrumb-divider:                quote("/");
+
+$breadcrumb-border-radius:          $border-radius;

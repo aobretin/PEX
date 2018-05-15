@@ -1,5 +1,5 @@
-@import "custom";
+@import "node_modules/bootstrap/scss/functions";
+@import "config";
+@import "utilities";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
-@import "typography";
-@import "layout";
-@import "helper-classes";
+@import "theme";

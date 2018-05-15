@@ -1,0 +1,28 @@
+@import "general";
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-cell-padding:          .75rem;
+$table-cell-padding-sm:       .3rem;
+
+$table-bg:                    transparent;
+$table-accent-bg:             rgba(color('black'), .05);
+$table-hover-bg:              rgba(color('black'), .075);
+$table-active-bg:             color('black');
+
+$table-border-width:          $border-width;
+$table-border-color:          color('black');
+
+$table-head-bg:               color('black');
+$table-head-color:            color('black');
+
+$table-dark-bg:               color('black');
+$table-dark-accent-bg:        rgba(color('white'), .05);
+$table-dark-hover-bg:         rgba(color('white'), .075);
+$table-dark-border-color:     lighten(color('black'), 7.5%);
+$table-dark-color:            color('black');
+
+$table-striped-order:         odd;
+
+$table-caption-color:         color('black');

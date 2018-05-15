@@ -1,0 +1,35 @@
+<div>
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+      <router-link
+        :to="{
+          name: 'Dashboard',
+          params: {
+            partyId: $route.params.partyId
+          }
+        }"
+        class="nav-link"
+        active-class="active"
+        exact
+      >
+        Dashboard
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <router-link
+        :to="{
+          name: 'Guestlist',
+          params: {
+            partyId: $route.params.partyId
+          }
+        }"
+        class="nav-link"
+        active-class="active"
+      >
+        Guestlist
+      </router-link>
+    </li>
+  </ul>
+
+  <router-view></router-view>
+</div>

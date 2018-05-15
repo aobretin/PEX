@@ -1,0 +1,22 @@
+<div class="form-group" :class="autocompleteParentClass">
+  <template v-if="autocompleteLabel">
+    <label :for="autocompleteName">{{autocompleteLabel}}</label>
+  </template>
+
+  <el-autocomplete
+    v-model="autocompleteValue"
+    :ref="autocompleteName"
+    :placeholder="autocompleteHint"
+    :trigger-on-focus="false"
+    :fetch-suggestions="queryFunc"
+    :valueKey="displayKey"
+    @select="changeValue"
+  >
+    <input v-model="value"
+           :name="autocompleteName"
+           :id="autocompleteName"
+           type="hidden"
+           slot="prefix"
+    >
+  </el-autocomplete>
+</div>

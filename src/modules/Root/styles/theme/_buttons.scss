@@ -1,0 +1,17 @@
+$buttons: (
+
+);
+
+.btn {
+  // default styles here
+
+  @each $btn, $colors in $buttons {
+    &.btn-#{$btn} {
+      background: map-get($colors, "background");
+      color: map-get($colors, "color");
+      &:hover {
+        background: darken(map-get($colors, "background"), 5%);
+      }
+    }
+  }
+}

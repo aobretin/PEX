@@ -1,0 +1,19 @@
+@import "../utilities/mixins";
+
+$basepath: "../../../src/assets/fonts/";
+
+@include font-face(
+                    PlaylistScript,
+                    quote($basepath + "Playlist-Script/Playlist-Script"),
+                    null,
+                    null,
+                    ttf eot woff
+                  );
+
+@include font-face(
+                    MontserratRegular,
+                    quote($basepath + "Montserrat/Montserrat-Regular"),
+                    null,
+                    null,
+                    ttf eot woff
+                  );

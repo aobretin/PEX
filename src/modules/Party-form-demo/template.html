@@ -1,0 +1,117 @@
+<div>
+  <form>
+      <div class="form-row">
+        <Input-generator
+          input="input"
+          inputName="data0"
+          inputLabel="Demo label"
+          inputPlaceholder="Type here..."
+          inputClass="cool-class"
+          inputParentClass="col-6"
+          v-model="partyDemoData.data0"
+          :customCallback="c"
+          :validations="$v.partyDemoData.data0"
+        >
+          <span class="text-danger" v-if="!$v.partyDemoData.data0.required">
+            This is mega required
+          </span>
+        </Input-generator>
+
+        <Autocomplete-generator
+          autocompleteLabel="Demo autocomplete"
+          autocompleteName="demo_autocomplete"
+          autocompleteHint="Search..."
+          autocompleteParentClass="col-6"
+          displayKey="full_name"
+          v-model="partyDemoData.auto"
+          :queryFunc="fetchReq"
+          :setSelectedValue="setNewValue"
+        />
+
+        <Datepicker-generator
+          v-model="partyDemoData.date"
+          dateName="demo_date"
+          dateLabel="Demo date"
+          dateParentClass="col-6"
+          :customCallback="c"
+        />
+
+        <Datepicker-generator
+          v-model="partyDemoData.date1"
+          dateName="demo_date1"
+          dependency="demo_date"
+          dateParentClass="col-6"
+          dateLabel="Demo date1"
+        />
+
+        <Timepicker-generator
+          timeName="demo_time"
+          timeLabel="Demo time"
+          timeParentClass="col-6"
+          v-model="partyDemoData.time"
+        />
+
+        <Timepicker-generator
+          timeName="demo_time1"
+          timeLabel="Demo time1"
+          timeParentClass="col-6"
+          v-model="partyDemoData.time1"
+          dependency="demo_time"
+        />
+
+        <Input-generator
+          input="select"
+          inputName="data1"
+          inputLabel="Demo select label"
+          inputParentClass="col-6"
+          v-model="partyDemoData.data1"
+          :validations="$v.partyDemoData.data1"
+          :options="options"
+        >
+          <span class="text-danger" v-if="!$v.partyDemoData.data1.required">
+            This select is mega required
+          </span>
+      </Input-generator>
+
+      <Input-generator
+        input="textarea"
+        inputName="data2"
+        inputLabel="Demo label"
+        inputPlaceholder="Type here..."
+        inputClass="cool-class"
+        inputParentClass="col-12"
+        v-model="partyDemoData.data2"
+        :customCallback="c"
+        :validations="$v.partyDemoData.data2"
+      />
+
+      <Input-generator
+        input="input"
+        inputType="checkbox"
+        inputName="data3"
+        inputLabel="Check me..."
+        inputParentClass="col-6 mb20 pl20"
+        v-model="partyDemoData.data3"
+      />
+
+      <div class="col-6">
+        <div class="row">
+          <Input-generator
+            v-for="(radio, i) in partyDemoData.radios"
+            input="input"
+            inputType="radio"
+            :inputName="`demo_radio_${i}`"
+            :inputLabel="radio.label"
+            inputParentClass="col-6"
+            :checkRadioValue="radio.value"
+            v-model="partyDemoData.radioVal"
+          />
+        </div>
+      </div>
+
+      <button type="button" @click="submit" class="btn btn-success col-12" :disabled="$v.partyDemoData.$invalid">
+        Submit using my {{partyDemoData.radioVal}}
+      </button>
+    </div>
+  </form>
+</div>

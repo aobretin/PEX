@@ -1,0 +1,7 @@
+.el-date-editor {
+  width: 100%;
+  /deep/ .el-input__inner {
+    border: none;
+    height: 20px;
+  }
+}

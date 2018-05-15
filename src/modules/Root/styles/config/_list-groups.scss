@@ -1,0 +1,26 @@
+@import "general";
+@import "body";
+
+// List group
+
+$list-group-bg:                     color('white');
+$list-group-border-color:           rgba(color('black'), .125);
+$list-group-border-width:           $border-width;
+$list-group-border-radius:          $border-radius;
+
+$list-group-item-padding-y:         5px;
+$list-group-item-padding-x:         10px;
+
+$list-group-hover-bg:               color('black');
+$list-group-active-color:           color('black');
+$list-group-active-bg:              color('white');
+$list-group-active-border-color:    color('black');
+
+$list-group-disabled-color:         color('white');
+$list-group-disabled-bg:            $list-group-bg;
+
+$list-group-action-color:           color('white');
+$list-group-action-hover-color:     $list-group-action-color;
+
+$list-group-action-active-color:    $body-color;
+$list-group-action-active-bg:       color('white');

@@ -1,0 +1,19 @@
+// general colors will be called with color('key')
+
+$brand-primary: red;
+
+$colors: ();
+$colors: map-merge((
+  // default general colors
+  "white": #fff,
+  "black": #000,
+  "red"  : red,
+  "blue" : blue
+), $colors);
+
+// theme colors will be called with theme-color('key')
+$theme-colors: ();
+$theme-colors: map-merge((
+  "primary":    color('red'),
+  "secondary":  color('blue')
+), $theme-colors);

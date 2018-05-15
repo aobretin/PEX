@@ -1,0 +1,21 @@
+@import "general";
+@import "grid";
+// Cards
+
+$card-spacer-y:                     10px;
+$card-spacer-x:                     15px;
+$card-border-width:                 $border-width;
+$card-border-radius:                $border-radius;
+$card-border-color:                 rgba(color('black'), .125);
+$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-cap-bg:                       rgba(color('black'), .03) !default;
+$card-bg:                           color('white') !default;
+
+$card-img-overlay-padding:          30px;
+
+$card-group-margin:                 ($grid-gutter-width / 2);
+$card-deck-margin:                  $card-group-margin;
+
+$card-columns-count:                3;
+$card-columns-gap:                  10px;
+$card-columns-margin:               $card-spacer-y;

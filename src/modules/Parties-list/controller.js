@@ -1,5 +1,7 @@
 import {mapGetters, mapActions} from 'vuex';
 
+import {GLOBAL_NAMES} from 'CONSTANTS';
+
 import {
   buildModuleAliases
 } from 'helpers';
@@ -7,20 +9,34 @@ import {
 import Service from './service';
 import store from './store';
 
+import List from './components/List';
+
 const {
-  MODULE_NAME
+  MODULES_NAMES: {
+    PARTIES_LIST
+  }
+} = GLOBAL_NAMES;
+
+const {
+  MODULE_NAME,
+  parties,
+  modifyParties
 } = buildModuleAliases(
-  'Homepage'
+  PARTIES_LIST,
+  'parties',
+  'modifyParties'
 )
 
 export default {
   name: MODULE_NAME,
   computed: {
     ...mapGetters({
+      parties
     })
   },
   methods: {
     ...mapActions({
+      modifyParties
     })
   },
   created() {
@@ -30,4 +46,7 @@ export default {
       this.$store.registerModule(MODULE_NAME, store);
     }
   },
+  components: {
+    plist: List
+  }
 }

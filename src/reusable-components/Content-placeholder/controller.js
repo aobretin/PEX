@@ -1,8 +1,16 @@
 import {buildModuleAliases} from 'helpers';
 
+import {GLOBAL_NAMES} from 'CONSTANTS';
+
+const {
+  REUSABLES: {
+    CONTENT_PLACEHOLDER
+  }
+} = GLOBAL_NAMES;
+
 const {
   MODULE_NAME
-} = buildModuleAliases('Content-placeholder')
+} = buildModuleAliases(CONTENT_PLACEHOLDER)
 
 export default {
   name: MODULE_NAME,

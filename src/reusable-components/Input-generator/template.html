@@ -1,0 +1,73 @@
+<div :class="[
+    {'form-group': !isCheckOrRadio},
+    {'form-check': isCheckOrRadio},
+    inputParentClass
+  ]"
+    :style="styles"
+  >
+  <template v-if="inputLabel && !isCheckOrRadio">
+    <label :for="inputName">{{inputLabel}}</label>
+  </template>
+
+  <template v-if="input === 'textarea'">
+    <textarea
+      :name="inputName"
+      :id="inputName"
+      :class="inputClass"
+      :placeholder="inputPlaceholder"
+      v-model="currentValue"
+      @input="() => {
+        if (validations) validations.$touch();
+        update();
+      }"
+      class="form-control"
+    ></textarea>
+  </template>
+
+  <template v-else-if="input === 'select'">
+    <select
+      :name="inputName"
+      :id="inputName"
+      :class="inputClass"
+      :placeholder="inputPlaceholder"
+      v-model="currentValue"
+      @input="() => {
+        if (validations) validations.$touch();
+        update();
+      }"
+      class="form-control"
+    >
+      <option v-for="(o, i) in options" :value="o[optionsKeyText.key]">
+        {{o[optionsKeyText.text]}}
+      </option>
+    </select>
+  </template>
+
+  <template v-else>
+    <input
+      :type="inputType"
+      :name="inputName"
+      :id="inputName"
+      :class="[
+        {'form-check-input': isCheckOrRadio},
+        inputClass
+      ]"
+      :placeholder="inputPlaceholder"
+      :value="checkRadioValue"
+      v-model="currentValue"
+      @input="() => {
+        if (validations) validations.$touch();
+        update();
+      }"
+      class="form-control"
+    />
+
+    <template v-if="isCheckOrRadio">
+      <label :for="inputName" class="form-check-label">{{inputLabel}}</label>
+    </template>
+  </template>
+
+  <div class="errors-holder" v-if="validations && validations.$dirty">
+    <slot />
+  </div>
+</div>

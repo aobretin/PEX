@@ -1,0 +1,17 @@
+@import "tipography";
+@import "general";
+
+// Alerts
+//
+// Define alert colors, border radius, and padding.
+
+$alert-padding-y:                   5px;
+$alert-padding-x:                   10px;
+$alert-margin-bottom:               5px;
+$alert-border-radius:               $border-radius;
+$alert-link-font-weight:            $font-weight-bold;
+$alert-border-width:                $border-width;
+
+$alert-bg-level:                    -10;
+$alert-border-level:                -9;
+$alert-color-level:                 6;

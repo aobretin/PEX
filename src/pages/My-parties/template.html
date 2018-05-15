@@ -1,3 +1,36 @@
-<div>
-  <Parties-list />
+<div class="parties-container row align-items-center">
+  <div class="col-12 mb60 text-center page-slice">
+    <h2>My parties</h2>
+  </div>
+
+  <div class="col-12 mb60 text-center page-slice">
+    <router-link
+      :to="{
+        name: 'PartyForm'
+      }"
+      class="btn btn-success"
+    >
+      Create new Party
+    </router-link>
+
+    <router-link
+      :to="{
+        name: 'PartyForm',
+        params: {
+          partyId: 5
+        }
+      }"
+      class="btn btn-warning"
+    >
+      Edit party
+    </router-link>
+  </div>
+
+  <div class="col-12 mb40 text-center page-slice">
+    <Parties-list />
+  </div>
+
+  <div class="col-12 text-center page-slice">
+    <a href="#">View party archive</a>
+  </div>
 </div>

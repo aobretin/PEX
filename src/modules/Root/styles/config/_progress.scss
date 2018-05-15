@@ -1,0 +1,14 @@
+@import "tipography";
+@import "general";
+
+// Progress bars
+
+$progress-height:                   50px;
+$progress-font-size:                ($font-size-base * .75);
+$progress-bg:                       color('black');
+$progress-border-radius:            $border-radius;
+$progress-box-shadow:               inset 0 .1rem .1rem rgba(color('black'), .1);
+$progress-bar-color:                color('white');
+$progress-bar-bg:                   theme-color("primary");
+$progress-bar-animation-timing:     1s linear infinite;
+$progress-bar-transition:           width .6s ease;
