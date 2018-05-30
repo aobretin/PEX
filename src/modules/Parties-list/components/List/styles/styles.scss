@@ -1,0 +1,113 @@
+.party-list-wrapper {
+  h3 {
+    font-family: $font-family-montserrat;
+  }
+
+  .party-list {
+    position: relative;
+    padding: 15px 35px;
+    border-top: 1px solid color('border-color');
+    &:last-child {
+      border-bottom: 1px solid color('border-color');
+    }
+    &:not(.no-results-container):not(.transfered):hover {
+      background: color('border-color');
+      cursor: pointer;
+      .arrow-i {
+        display: none;
+      }
+
+      .info-i {
+        display: block;
+      }
+    }
+    &.transfered {
+      background: color('bright-white');
+      .fa-icon {
+        display: none;
+      }
+    }
+
+    .fa-icon {
+      position: absolute;
+      right: 10px;
+      top: calc(50% - 8px);
+      color: color('bright-blue');
+      &.info-i {
+        display: none;
+        color: color('grey-color');
+      }
+    }
+
+    .party-details {
+      text-align: left;
+      .party-date {
+        color: color('bright-blue');
+        font-size: 12px;
+      }
+      .party-name {
+        color: color('grey-color');
+      }
+      .party-transfer {
+        color: theme-color('primary');
+        font-size: 13px;
+        font-weight: $font-weight-bold;
+        span {
+          color: color('bright-blue');
+        }
+      }
+    }
+
+    .host-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: color('grey-color');
+      font-size: 13px;
+      span {
+        margin-left: 5px;
+        color: theme-color('primary');
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .status-and-time {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .number-counter {
+        font-size: 12px;
+        color: color('grey-color');
+        /deep/ .number {
+          font-size: 16px;
+          color: color('bright-blue');
+        }
+        /deep/ .number-connector {
+          margin: 0 10px;
+        }
+      }
+
+      .party-status {
+        font-size: 12px;
+        color: color('grey-color');
+        span {
+          margin-left: 5px;
+          color: theme-color('primary');
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
+    .no-results {
+      color: color('grey-color');
+      font-size: 13px;
+      padding: 11px 0;
+    }
+  }
+
+  &.previous {
+    .party-list .party-details .party-date {
+      color: color('grey-color');
+    }
+  }
+}

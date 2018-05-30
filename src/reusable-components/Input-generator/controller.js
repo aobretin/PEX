@@ -27,12 +27,13 @@ export default {
       },
       set(v) {
         this.$emit('input', v);
+        this.update(v);
       }
     }
   },
   methods: {
-    update() {
-      this.customCallback();
+    update(v) {
+      this.customCallback(v);
     }
   },
   beforeDestroy() {
@@ -63,7 +64,10 @@ export default {
       type: String
     },
     inputParentClass: {
-      type: String
+      type: [
+        String,
+        Object
+      ]
     },
     customCallback: {
       type: Function,
@@ -76,17 +80,6 @@ export default {
     validations: {
       type: Object,
       default: () => {}
-    },
-    options: {
-      type: Array,
-      default: () => []
-    },
-    optionsKeyText: {
-      type: Object,
-      default: () => ({
-        key: 'value',
-        text: 'text'
-      })
     },
 
     styles: {

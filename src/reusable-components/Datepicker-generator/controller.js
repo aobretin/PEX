@@ -22,6 +22,7 @@ export default {
   name: MODULE_NAME,
   data() {
     return {
+      placeholderFormat: SHOW_FORMAT.toUpperCase(),
       disabledDates: {}
     }
   },
@@ -80,6 +81,9 @@ export default {
     });
   },
   methods: {
+    openDatepicker() {
+      this.$refs[this.dateName].pickerVisible = true;
+    },
     update(v) {
       const {
         dateName
@@ -135,6 +139,10 @@ export default {
     },
     customCallback: {
       type: Function,
+      default: () => {}
+    },
+    validations: {
+      type: Object,
       default: () => {}
     },
 

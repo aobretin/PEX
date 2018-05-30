@@ -1,6 +1,11 @@
 <div class="form-group" :class="timeParentClass">
   <template v-if="timeLabel">
-    <label :for="timeName">{{timeLabel}}</label>
+    <label :for="timeName">
+      {{timeLabel}}
+      <template v-if="validations && validations.$params.required">
+        *
+      </template>
+    </label>
   </template>
 
   <el-time-select
@@ -8,7 +13,19 @@
     :id="timeName"
     :name="timeName"
     :ref="timeName"
+    :clearable="false"
     :picker-options="timeConfig"
+    :placeholder="timePlaceholder"
     v-model="currentTime"
+    @input="() => {
+      if (validations) validations.$touch();
+    }"
+    @blur="() => {
+      if (validations) validations.$touch();
+    }"
   />
+
+  <div class="errors-holder" v-if="validations && validations.$dirty">
+    <slot />
+  </div>
 </div>

@@ -1,0 +1,43 @@
+.address-book-users-wrapper {
+  height: 500px;
+  .address-book-users {
+    padding: 20px 50px;
+    border-top: 1px solid color('darker-border-color');
+    .no-results {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      font-size: 20px;
+    }
+    ul {
+      li {
+        border: solid color('darker-border-color');
+        border-width: 1px 0 0 0;
+        padding: 15px 5px;
+        &:first-child {
+          padding-top: 0;
+          border: none;
+        }
+        .user-name {
+          color: theme-color('primary');
+          font-size: 15px;
+        }
+
+        .user-address {
+          font-size: 13px;
+        }
+
+        .user-cta {
+          display: flex;
+          align-items: center;
+          .btn-address {
+            padding: 5px 30px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

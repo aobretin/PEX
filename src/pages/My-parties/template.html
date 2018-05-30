@@ -1,36 +1,39 @@
-<div class="parties-container row align-items-center">
-  <div class="col-12 mb60 text-center page-slice">
-    <h2>My parties</h2>
-  </div>
+<div class="container pt100 pb100 pl150 pr150">
+  <div class="parties-container row no-gutters align-items-center">
+    <div class="col-12 mb60 text-center page-slice">
+      <h1>My Parties</h1>
+    </div>
 
-  <div class="col-12 mb60 text-center page-slice">
-    <router-link
-      :to="{
-        name: 'PartyForm'
-      }"
-      class="btn btn-success"
-    >
-      Create new Party
-    </router-link>
+    <div class="col-12 mb60 text-center page-slice">
+      <router-link
+        :to="{
+          name: 'PartyForm'
+        }"
+        class="btn btn-default"
+      >
+        Create new Party
+      </router-link>
+  <!--
+      <router-link
+        :to="{
+          name: 'PartyForm',
+          params: {
+            partyId: 5
+          }
+        }"
+        class="btn btn-warning"
+      >
+        Edit party
+      </router-link> -->
+    </div>
 
-    <router-link
-      :to="{
-        name: 'PartyForm',
-        params: {
-          partyId: 5
-        }
-      }"
-      class="btn btn-warning"
-    >
-      Edit party
-    </router-link>
-  </div>
+    <div class="col-12 mb60 text-center page-slice">
+      <Parties-list />
+    </div>
 
-  <div class="col-12 mb40 text-center page-slice">
-    <Parties-list />
-  </div>
-
-  <div class="col-12 text-center page-slice">
-    <a href="#">View party archive</a>
+    <div class="col-12 text-center page-slice bottom-link">
+      <a class="parties-link" href="#">View party archive</a>
+      <icon name="angle-right"></icon>
+    </div>
   </div>
 </div>

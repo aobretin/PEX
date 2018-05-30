@@ -1,0 +1,48 @@
+<div class="form-group" :class="selectParentClass" :style="styles">
+  <template v-if="selectLabel">
+    <label :for="selectName">
+      {{selectLabel}}
+      <template v-if="validations && validations.$params.required">
+        *
+      </template>
+    </label>
+  </template>
+
+  <div
+    @click="toggleSelect(!opened)"
+    v-on-clickaway="toggleSelect"
+    class="custom-selector-wrapper"
+    :name="selectName"
+    :class="{
+      'opened': opened,
+      'disabled': disabledNeeded
+    }"
+  >
+    <div class="custom-selector-value">
+      <span class="current-value">
+        {{showValue[optionsKeyText.text]}}
+      </span>
+      <Icon scale="1.5" :name="opened ? 'angle-up' : 'angle-down'"/>
+    </div>
+
+    <transition name="fade">
+      <div v-show="opened" class="options-list">
+        <ul>
+          <li
+            v-for="(opt, i) in processedOptions"
+            v-if="opt[optionsKeyText.key].length"
+            v-html="opt[optionsKeyText.text]"
+            @click="() => {
+              if (validations) validations.$touch();
+              update(opt);
+            }"
+          />
+        </ul>
+      </div>
+    </transition>
+  </div>
+
+  <div class="errors-holder" v-if="validations && validations.$dirty">
+    <slot />
+  </div>
+</div>

@@ -1,3 +1,33 @@
-.el-date-editor {
-  width: 100%;
+.datepicker-wrapper {
+  display: flex;
+  border: 1px solid color('darker-border-color');
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+  .el-date-editor {
+    width: 150px;
+    /deep/ .el-input__prefix {
+      display: none;
+    }
+    /deep/ .el-input__inner {
+      border: none;
+      cursor: pointer;
+      height: 100%;
+      padding: 0 20px;
+      font-size: 15px;
+      text-align: center;
+      &::placeholder {
+        color: color('grey-color');
+      }
+    }
+  }
+
+  .calendar-icon {
+    width: 50px;
+    border-left: 1px solid color('darker-border-color');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: theme-color('primary');
+  }
 }

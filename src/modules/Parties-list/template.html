@@ -1,5 +1,10 @@
 <div>
-  <plist class="mb50" title="Upcoming Parties" :parties="parties.upcoming" />
-  <plist class="mb50" title="Ongoing Parties" :parties="parties.ongoing" />
-  <plist title="Previous Parties" :parties="parties.previous" />
+  <Content-placeholder
+    :loadWhen="Object.keys(parties).length > 0"
+    :lines="25"
+  >
+    <plist class="mb50" title="Upcoming Parties" :parties="parties.upcoming" />
+    <plist class="mb50" title="Ongoing Parties" :parties="parties.ongoing" />
+    <plist title="Previous Parties" :parties="parties.previous" />
+  </Content-placeholder>
 </div>

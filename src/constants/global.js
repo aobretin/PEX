@@ -3,6 +3,7 @@ export const GLOBAL_NAMES = {
 
   DATES_FORMATS: {
     SHOW_FORMAT: 'dd/MM/yyyy',
+    TIME_SHOW_FORMAT: 'HH:MM',
     ISO_FORMAT : 'YYYY-MM-DD',
     TIME_CONFIG: {
       start: '00:00',
@@ -12,9 +13,29 @@ export const GLOBAL_NAMES = {
     TIME_DEFAULT: '00:00'
   },
 
+  PARTY_STATUSES: {
+    '0': 'Awaiting Delivery',
+    '2': 'Complete',
+    '3': 'Cancelled'
+  },
+
   MODULES_NAMES: {
-    PARTIES_LIST   : 'Parties-list',
-    PARTY_FORM_DEMO: 'Party-form-demo'
+    PARTIES_LIST: {
+      name: 'Parties-list',
+      components: {
+        _PARTY_LIST: 'List'
+      }
+    },
+    PARTY_FORM_DEMO: {
+      name: 'Party-form-demo',
+      components: {
+        _ADDRESS_BOOK_USERS : 'Address-book-users',
+        _PICKERS            : 'Pickers',
+        _HOST_ADDRESS_FORM  : 'Host-address-form',
+        _SHIPPING_ADDRESS   : 'Shipping-address',
+        _PARTY_LOCATION     : 'Party-location'
+      }
+    }
   },
 
   PAGES_NAMES: {
@@ -25,13 +46,12 @@ export const GLOBAL_NAMES = {
     GUESTLIST : 'Guestlist'
   },
 
-  COMPONENTS_NAMES: {
-    _PARTY_LIST: 'List'
-  },
-
   REUSABLES: {
+    DIALOG_GENERATOR      : 'Dialog-generator',
+    COUNTER               : 'Counter',
     CONTENT_PLACEHOLDER   : 'Content-placeholder',
     INPUT_GENERATOR       : 'Input-generator',
+    SELECT_GENERATOR      : 'Select-generator',
     DATEPICKER_GENERATOR  : 'Datepicker-generator',
     AUTOCOMPLETE_GENERATOR: 'Autocomplete-generator',
     TIMEPICKER_GENERATOR  : 'Timepicker-generator'

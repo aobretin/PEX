@@ -11,9 +11,9 @@ $font-family-base:            $font-family-montserrat;
 
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem; // Assumes the browser default, typically `16px`
-$font-size-lg:                ($font-size-base * 1.25);
-$font-size-sm:                ($font-size-base * .875);
+$font-size-base:              16px; // Assumes the browser default, typically `16px`
+$font-size-lg:                16px;
+$font-size-sm:                16px;
 
 $font-weight-light:           300;
 $font-weight-normal:          400;
@@ -22,23 +22,23 @@ $font-weight-bold:            700;
 $font-weight-base:            $font-weight-normal;
 $line-height-base:            1.5;
 
-$h1-font-size:                $font-size-base * 2.5;
-$h2-font-size:                $font-size-base * 2;
-$h3-font-size:                $font-size-base * 1.75;
-$h4-font-size:                $font-size-base * 1.5;
-$h5-font-size:                $font-size-base * 1.25;
-$h6-font-size:                $font-size-base;
+$h1-font-size:                55px;
+$h2-font-size:                24px;
+$h3-font-size:                18px;
+$h4-font-size:                18px;
+$h5-font-size:                16px;
+$h6-font-size:                14px;
 
 $headings-margin-bottom:      20px;
-$headings-font-family:        inherit;
-$headings-font-weight:        500;
+$headings-font-family:        $font-family-playlist-script;
+$headings-font-weight:        400;
 $headings-line-height:        1.2;
-$headings-color:              inherit;
+$headings-color:              theme-color('primary');
 
-$display1-size:               6rem;
-$display2-size:               5.5rem;
-$display3-size:               4.5rem;
-$display4-size:               3.5rem;
+// $display1-size:               6rem;
+// $display2-size:               5.5rem;
+// $display3-size:               4.5rem;
+// $display4-size:               3.5rem;
 
 $display1-weight:             300;
 $display2-weight:             300;

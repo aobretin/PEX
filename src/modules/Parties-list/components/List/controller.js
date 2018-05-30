@@ -2,23 +2,38 @@ import {
   buildModuleAliases
 } from 'helpers'
 
-import {GLOBAL_NAMES} from 'CONSTANTS';
+import {
+  GLOBAL_NAMES
+} from 'CONSTANTS';
+
+import {
+  convertToPartyTime
+} from 'filters';
+
+import {
+  checkIfDateBefore,
+  getTimeDiff,
+  getPartyStatus
+} from 'helpers';
 
 const {
-  COMPONENTS_NAMES: {
-    _PARTY_LIST
+  MODULES_NAMES: {
+    PARTIES_LIST
   }
 } = GLOBAL_NAMES;
 
 const {
   MODULE_NAME
 } = buildModuleAliases(
-  _PARTY_LIST
+  PARTIES_LIST._PARTY_LIST
 )
 
 export default {
   name: MODULE_NAME,
   methods: {
+    checkIfDateBefore,
+    getTimeDiff,
+    getPartyStatus
   },
   props: {
     title: {
@@ -29,5 +44,8 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  filters: {
+    convertToPartyTime
   }
 }

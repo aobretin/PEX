@@ -1,117 +1,111 @@
-<div>
+<div class="party-form">
+  <Dialog-generator
+    title="Select party host"
+    :visible="addressBookIsOpened"
+    :closeModal="toggleAdressBook"
+    :lockScroll="true"
+  >
+    <AddressBookUsers :select="selectUser" :users="addressBookUsers" />
+  </Dialog-generator>
+
   <form>
-      <div class="form-row">
-        <Input-generator
-          input="input"
-          inputName="data0"
-          inputLabel="Demo label"
-          inputPlaceholder="Type here..."
-          inputClass="cool-class"
-          inputParentClass="col-6"
-          v-model="partyDemoData.data0"
-          :customCallback="c"
-          :validations="$v.partyDemoData.data0"
-        >
-          <span class="text-danger" v-if="!$v.partyDemoData.data0.required">
-            This is mega required
-          </span>
-        </Input-generator>
-
-        <Autocomplete-generator
-          autocompleteLabel="Demo autocomplete"
-          autocompleteName="demo_autocomplete"
-          autocompleteHint="Search..."
-          autocompleteParentClass="col-6"
-          displayKey="full_name"
-          v-model="partyDemoData.auto"
-          :queryFunc="fetchReq"
-          :setSelectedValue="setNewValue"
-        />
-
-        <Datepicker-generator
-          v-model="partyDemoData.date"
-          dateName="demo_date"
-          dateLabel="Demo date"
-          dateParentClass="col-6"
-          :customCallback="c"
-        />
-
-        <Datepicker-generator
-          v-model="partyDemoData.date1"
-          dateName="demo_date1"
-          dependency="demo_date"
-          dateParentClass="col-6"
-          dateLabel="Demo date1"
-        />
-
-        <Timepicker-generator
-          timeName="demo_time"
-          timeLabel="Demo time"
-          timeParentClass="col-6"
-          v-model="partyDemoData.time"
-        />
-
-        <Timepicker-generator
-          timeName="demo_time1"
-          timeLabel="Demo time1"
-          timeParentClass="col-6"
-          v-model="partyDemoData.time1"
-          dependency="demo_time"
-        />
-
-        <Input-generator
-          input="select"
-          inputName="data1"
-          inputLabel="Demo select label"
-          inputParentClass="col-6"
-          v-model="partyDemoData.data1"
-          :validations="$v.partyDemoData.data1"
-          :options="options"
-        >
-          <span class="text-danger" v-if="!$v.partyDemoData.data1.required">
-            This select is mega required
-          </span>
-      </Input-generator>
-
-      <Input-generator
-        input="textarea"
-        inputName="data2"
-        inputLabel="Demo label"
-        inputPlaceholder="Type here..."
-        inputClass="cool-class"
-        inputParentClass="col-12"
-        v-model="partyDemoData.data2"
-        :customCallback="c"
-        :validations="$v.partyDemoData.data2"
-      />
-
+    <div class="form-row mb60 pb60">
+      <label class="col-sm-2">Party Name*</label>
       <Input-generator
         input="input"
-        inputType="checkbox"
-        inputName="data3"
-        inputLabel="Check me..."
-        inputParentClass="col-6 mb20 pl20"
-        v-model="partyDemoData.data3"
-      />
+        inputName="partyName"
+        inputParentClass="col-sm-9"
+        v-model="partyDemoData.name"
+        :validations="$v.partyDemoData.name"
+      >
+        <span class="text-danger" v-if="!$v.partyDemoData.name.required">
+          Party name is required
+        </span>
+      </Input-generator>
+    </div>
 
-      <div class="col-6">
-        <div class="row">
-          <Input-generator
-            v-for="(radio, i) in partyDemoData.radios"
-            input="input"
-            inputType="radio"
-            :inputName="`demo_radio_${i}`"
-            :inputLabel="radio.label"
-            inputParentClass="col-6"
-            :checkRadioValue="radio.value"
-            v-model="partyDemoData.radioVal"
-          />
-        </div>
+    <div class="form-row mb60 pb60">
+      <label class="col-sm-2">Party Type*</label>
+      <Select-generator
+        selectName="partyType"
+        v-model="partyDemoData.type"
+        selectParentClass="col-sm-4"
+        :validations="$v.partyDemoData.type"
+        :options="typeOptions"
+      >
+        <span class="text-danger" v-if="!$v.partyDemoData.type.required">
+          Party type is required
+        </span>
+      </Select-generator>
+    </div>
+
+    <Pickers
+      class="form-row mb60 pb60"
+      :validations="$v.partyDemoData"
+      :data="partyDemoData"
+    />
+
+    <div class="form-row mb60 pb60">
+      <div class="col-sm-2">
+        <label>Party host*</label>
+        <p class="address-book-cta mt30">
+          Input Host details or choose from your <a @click="getAddressBookUsers" href="javascript:;">Address Book</a>
+        </p>
       </div>
 
-      <button type="button" @click="submit" class="btn btn-success col-12" :disabled="$v.partyDemoData.$invalid">
-        Submit using my {{partyDemoData.radioVal}}
+      <Host-address-form
+         class="host-form col-sm-10"
+         :address-options="addressOptions"
+         :validations="$v.partyDemoData"
+         :data="partyDemoData"
+         :radios="hostRadios"
+         :methods="{
+           toggleIfConsultantIsHost,
+           syncAddressWithShipping,
+           syncAddressWithLocation
+         }"
+      />
+    </div>
+
+    <Shipping-address
+      class="form-row mb60 pb60"
+      :address-options="addressOptions"
+      :validations="$v.partyDemoData"
+      :data="partyDemoData"
+      :radios="shippingRadios"
+      :methods="{
+        toggleWhichShippingAddress
+      }"
+    />
+
+    <Party-location
+      class="form-row mb60 pb60"
+      :address-options="addressOptions"
+      :validations="$v.partyDemoData"
+      :data="partyDemoData"
+      :radios="locationRadios"
+      :methods="{
+        toggleWhichLocationAddress
+      }"
+    />
+
+    <div class="form-row mb60 pb60">
+      <label class="col-sm-2">Party hashtag</label>
+      <Input-generator
+        input="input"
+        inputName="partyHashtag"
+        inputParentClass="col-sm-4"
+        v-model="partyDemoData.hashtag"
+        :customCallback="ensureIsHashtag"
+      />
+    </div>
+
+    <div class="col-12 text-center">
+      <button type="button" class="btn btn-default" :disabled="$v.partyDemoData.$invalid">
+        Create the Party
       </button>
+
+      <router-link class="back-btn mt20" to="/">Cancel</router-link>
     </div>
   </form>
 </div>

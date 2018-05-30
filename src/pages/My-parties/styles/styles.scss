@@ -1,0 +1,10 @@
+.bottom-link {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .fa-icon {
+    margin-left: 10px;
+    color: color('bright-blue');
+  }
+}

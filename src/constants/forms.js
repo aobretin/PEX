@@ -1,51 +1,133 @@
 import moment from 'moment';
-import {GLOBAL_NAMES} from 'CONSTANTS';
 import {
   required,
-  sameAs,
-  minLength
+  email,
+  numeric
 } from 'vuelidate/lib/validators';
-
-const {
-  DATES_FORMATS: {
-    ISO_FORMAT
-  }
-} = GLOBAL_NAMES;
 
 export const FORMS = {
   PARTY_FORM: {
     values: {
-      auto: '',
-      time: '00:00',
-      time1: '00:00',
-      date: moment().format(ISO_FORMAT),
-      date1: moment().format(ISO_FORMAT),
-      data0: '',
-      data1: '',
-      data2: '',
-      data3: false,
-      radioVal: 'dog',
-      radios: [
-        {
-          label: 'Dog',
-          value: 'dog'
-        },
-        {
-          label: 'Cat',
-          value: 'cat'
-        }
-      ]
+      name: '',
+      type: '',
+      startDate: '',
+      startTime: '',
+      host: {
+        firstName: '',
+        lastName: '',
+        mail: '',
+        phone: '',
+        social: '',
+        address: ''
+      },
+      shipping: '',
+      location: '',
+      hashtag: '#'
     },
     validations: {
-      data0: {
+      name: {
         required
       },
-      data1: {
+      type: {
         required
       },
-      data2: {
+      startDate: {
+        required
+      },
+      startTime: {
+        required
+      },
+      host: {
+        firstName: {
+          required
+        },
+        lastName: {
+          required
+        },
+        mail: {
+          email
+        },
+        phone: {
+          numeric
+        }
+      },
+      shipping: {
         required
       }
-    }
+    },
+    radios: {
+      host: {
+        value: 'choose',
+        inputs: [
+          {
+            name: 'choose',
+            text: 'Choose Party Host',
+            value: 'choose'
+          },
+          {
+            name: 'self',
+            text: 'I will host this Party',
+            value: 'self'
+          }
+        ]
+      },
+      shipping: {
+        value: 'host',
+        inputs: [
+          {
+            name: 'host',
+            text: 'Host Address',
+            value: 'host'
+          },
+          {
+            name: 'consultant',
+            text: 'Consultant Address',
+            value: 'consultant'
+          },
+          {
+            name: 'other',
+            text: 'Other Address',
+            value: 'other'
+          }
+        ]
+      },
+      location: {
+        value: 'host',
+        inputs: [
+          {
+            name: 'hostLocation',
+            text: 'Host Location',
+            value: 'host'
+          },
+          {
+            name: 'otherLocation',
+            text: 'Other Location',
+            value: 'other'
+          }
+        ]
+      }
+    },
+    typeOptions: [
+      {
+        value: '',
+        text: 'Select...'
+      },
+      {
+        value: 'find',
+        text: 'Find your Signature'
+      },
+      {
+        value: 'classic',
+        text: 'Classic Party'
+      },
+      {
+        value: 'collected',
+        text: 'Collected Party'
+      },
+      {
+        value: 'virtual',
+        text: 'Facebook / Virtual'
+      }
+    ]
   }
 }

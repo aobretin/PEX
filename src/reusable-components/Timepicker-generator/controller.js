@@ -8,7 +8,8 @@ const {
   },
   DATES_FORMATS: {
     TIME_DEFAULT,
-    TIME_CONFIG
+    TIME_CONFIG,
+    TIME_SHOW_FORMAT
   }
 } = GLOBAL_NAMES;
 
@@ -18,6 +19,11 @@ const {
 
 export default {
   name: MODULE_NAME,
+  data() {
+    return {
+      timePlaceholder: TIME_SHOW_FORMAT
+    }
+  },
   computed: {
     currentTime: {
       get() {
@@ -72,6 +78,10 @@ export default {
     },
     dependency: {
       type: String
+    },
+    validations: {
+      type: Object,
+      default: () => {}
     },
 
     styles: {

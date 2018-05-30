@@ -9,82 +9,65 @@ import {
   array,
   string,
   number,
-  date
+  date,
+  lazy
 } from 'yup';
-// 
-// export const DEMO_QUERY_SCHEMA = {
-//   GET_USERS: {
-//     url: URLS.USERS.GET_USERS,
-//     method: 'get',
-//     schema: array().of(
-//       object().shape(
-//         {
-//           userId: number().required(),
-//           name: string().required(),
-//           username: string().required(),
-//           email: string().required(),
-//           address: object().shape(
-//             {
-//               street: string().required()
-//             }
-//           ).required(),
-//           phone: string().required()
-//         }
-//       )
-//     ),
-//     query: `res.data[].{
-//       userId: id,
-//       name: name,
-//       username: username,
-//       email: email,
-//       address: {
-//         street: address.street
-//       },
-//       phone: phone
-//     }`
-//   },
-//   GET_USER: {
-//     url: URLS.USERS.GET_USER,
-//     method: 'get',
-//     schema: object().shape(
-//       {
-//         userId: number().required(),
-//         name: string().required(),
-//         username: string().required(),
-//         email: string().required(),
-//         address: object().shape(
-//           {
-//             street: string().required(),
-//             suite: string().required(),
-//             city: string().required(),
-//             zipcode: string().required(),
-//             location: object().shape(
-//               {
-//                 latitude: string().required(),
-//                 longitude: string().required()
-//               }
-//             ).required()
-//           }
-//         ).required(),
-//         phone: string().required()
-//       }
-//     ),
-//     query: `res.data.{
-//       userId: id,
-//       name: name,
-//       username: username,
-//       email: email,
-//       address: {
-//         street: address.street,
-//         suite: address.suite,
-//         city: address.city,
-//         zipcode: address.zipcode,
-//         location: {
-//           latitude: address.geo.lat,
-//           longitude: address.geo.lng
-//         }
-//       },
-//       phone: phone
-//     }`
-//   }
-// }
+
+export const PARTIES_MOCK_SCHEMA = {
+  GET_PARTIES: {
+    url: URLS.PARTIES.GET_PARTIES,
+    method: 'get',
+    schema: array().of(
+      object().shape(
+        {
+          name: string().required(),
+          startDate: string().required(),
+          startTime: mixed(),
+          host: string().required(),
+          status: string().required(),
+          partyStatus: string().required(),
+          transfered: mixed()
+        }
+      )
+    ),
+    query: `res.data[].{
+        name: name,
+        startDate: startDate,
+        startTime: startTime,
+        host: host,
+        status: status,
+        partyStatus: partyStatus,
+        transfered: transfered
+    }`
+  }
+}
+
+export const ADDRESS_BOOK_USERS_MOCK = {
+  GET_USERS: {
+    url: URLS.ADDRESS_BOOK.GET_USERS,
+    method: 'get',
+    schema: array().of(
+      object().shape(
+        {
+          firstName: string().required(),
+          lastName: string().required(),
+          address: mixed().concat(
+            string(),
+            array()
+          ).required(),
+          email: string(),
+          phone: mixed(),
+          social: mixed()
+        }
+      )
+    ),
+    query: `res.data[].{
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        address: address,
+        phone: phone,
+        social: social
+    }`
+  }
+}

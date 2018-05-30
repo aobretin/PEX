@@ -1,0 +1,39 @@
+.vb {
+  > .vb-dragger {
+    z-index: 5;
+    width: 14px;
+    right: 0;
+  }
+
+  .vb-content {
+    width: auto !important;
+  }
+
+  > .vb-dragger {
+    &:hover > .vb-dragger-styler {
+      opacity: 1;
+    }
+
+    > .vb-dragger-styler {
+      display: block;
+      backface-visibility: hidden;
+      transform: rotate3d(0,0,0,0);
+      transition: opacity .3s;
+      background: color('medium-blue');
+      opacity: .8;
+      border-radius: 20px;
+      height: 100%;
+    }
+  }
+
+  &.vb-scrolling-phantom > .vb-dragger,
+  &.vb-dragging-phantom > .vb-dragger {
+    > .vb-dragger-styler {
+      opacity: 1;
+    }
+  }
+
+  &.vb-dragging > .vb-dragger > .vb-dragger-styler {
+    opacity: 1;
+  }
+}

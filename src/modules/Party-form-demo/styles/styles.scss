@@ -1,0 +1,40 @@
+.party-form {
+  /deep/ .form-row {
+    border-bottom: 1px solid color('darker-border-color');
+    label {
+      font-size: 18px;
+      color: theme-color('primary');
+    }
+  }
+
+  /deep/ .form-group {
+    /deep/ label {
+      font-size: 12px;
+      color: color('darker-text-color');
+      margin-bottom: 5px;
+    }
+  }
+
+  .back-btn {
+    display: block;
+    color: color('bright-blue');
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .address-book-cta {
+    color: color('darker-text-color');
+    font-size: 14px;
+    line-height: 1.8;
+    a {
+      color: color('bright-blue');
+      text-decoration: underline;
+    }
+  }
+
+  /deep/ .host-adress-summary {
+    color: color('medium-blue');
+  }
+}

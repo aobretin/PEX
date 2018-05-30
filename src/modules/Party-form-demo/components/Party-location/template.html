@@ -1,0 +1,40 @@
+<div>
+  <label class="col-sm-2">Party Location Address</label>
+  <div class="host-form col-sm-5">
+    <div class="row">
+      <Input-generator
+        v-for="(radio, i) in radios.inputs"
+        input="input"
+        inputType="radio"
+        :inputName="radio.name"
+        :inputLabel="radio.text"
+        :checkRadioValue="radio.value"
+        :customCallback="methods.toggleWhichLocationAddress"
+        :inputParentClass="{
+          'col-sm-12': true,
+          'mb35': i !== radios.inputs.length - 1
+        }"
+        v-model="radios.value"
+      />
+    </div>
+  </div>
+
+  <div class="col-sm-5">
+    <p v-if="radios.value !== 'other'" class="host-adress-summary">
+      {{data.location}}
+    </p>
+
+    <Input-generator
+      v-else-if="!addressOptions.length"
+      inputName="locationAddress"
+      v-model="data.location"
+    />
+
+    <Select-generator
+      v-else
+      selectName="locationAddress"
+      v-model="data.location"
+      :options="addressOptions"
+    />
+  </div>
+</div>

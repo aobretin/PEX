@@ -5,8 +5,14 @@
   ]"
     :style="styles"
   >
+
   <template v-if="inputLabel && !isCheckOrRadio">
-    <label :for="inputName">{{inputLabel}}</label>
+    <label :for="inputName">
+      {{inputLabel}}
+      <template v-if="validations && validations.$params.required">
+        *
+      </template>
+    </label>
   </template>
 
   <template v-if="input === 'textarea'">
@@ -18,29 +24,9 @@
       v-model="currentValue"
       @input="() => {
         if (validations) validations.$touch();
-        update();
       }"
       class="form-control"
     ></textarea>
-  </template>
-
-  <template v-else-if="input === 'select'">
-    <select
-      :name="inputName"
-      :id="inputName"
-      :class="inputClass"
-      :placeholder="inputPlaceholder"
-      v-model="currentValue"
-      @input="() => {
-        if (validations) validations.$touch();
-        update();
-      }"
-      class="form-control"
-    >
-      <option v-for="(o, i) in options" :value="o[optionsKeyText.key]">
-        {{o[optionsKeyText.text]}}
-      </option>
-    </select>
   </template>
 
   <template v-else>
@@ -57,7 +43,6 @@
       v-model="currentValue"
       @input="() => {
         if (validations) validations.$touch();
-        update();
       }"
       class="form-control"
     />

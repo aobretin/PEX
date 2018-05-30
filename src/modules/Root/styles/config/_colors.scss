@@ -1,19 +1,27 @@
 // general colors will be called with color('key')
-
-$brand-primary: red;
-
 $colors: ();
 $colors: map-merge((
   // default general colors
   "white": #fff,
   "black": #000,
-  "red"  : red,
-  "blue" : blue
+  "grey-color": #666766,
+  "medium-grey-color": #f7f7f7,
+  "bright-blue": #71a5c9,
+  "medium-blue": #2a7ab0,
+  "bright-white": #fbfdff,
+
+  "border-color": #ededed,
+  "darker-border-color": #ccc,
+  "primary-color": #153257,
+  "darker-text-color": #686868,
+
+  "btn-color": #a0cf00,
+  "color-navy": #193157
 ), $colors);
 
 // theme colors will be called with theme-color('key')
 $theme-colors: ();
 $theme-colors: map-merge((
-  "primary":    color('red'),
-  "secondary":  color('blue')
+  "primary":    color('primary-color'),
+  "secondary":  color('white')
 ), $theme-colors);

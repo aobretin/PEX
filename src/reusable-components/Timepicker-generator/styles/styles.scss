@@ -1,7 +1,17 @@
 .el-date-editor {
   width: 100%;
+  max-width: 200px;
   /deep/ .el-input__inner {
     border: none;
     height: 20px;
+    padding: 0;
+    font-size: 15px;
+    &::placeholder {
+      color: color('grey-color');
+    }
+  }
+
+  /deep/ .el-input__prefix {
+    display: none;
   }
 }

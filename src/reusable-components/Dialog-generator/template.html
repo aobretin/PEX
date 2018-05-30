@@ -1,0 +1,13 @@
+<el-dialog
+  :visible.sync="visible"
+  :before-close="closeModal"
+  :title="title"
+  :append-to-body="appendToBody"
+  :lock-scroll="lockScroll"
+  :custom-class="customClass"
+  :close-on-click-modal="closeOnClick"
+  :close-on-press-escape="closeOnEsc"
+  :width="width"
+>
+  <slot />
+</el-dialog>

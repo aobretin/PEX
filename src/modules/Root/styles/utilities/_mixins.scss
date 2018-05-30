@@ -17,8 +17,6 @@
 		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
 	}
 
-  // @error $src;
-
 	@font-face {
 		font-family: quote($name);
 		font-style: $style;

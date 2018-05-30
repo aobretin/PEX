@@ -1,20 +1,55 @@
-<div class="party-list-wrapper">
+<div class="party-list-wrapper" :class="[title.split(' ')[0].toLowerCase()]">
   <h3 class="mb30">{{title}}</h3>
-  <div class="party-list row">
-    <div class="text-center col" v-if="!parties.length">
-      No parties found
-    </div>
 
-    <template v-else v-for="(party, i) in parties">
-      <div class="col-4">
-        first
+  <template v-if="!parties.length">
+    <div class="party-list no-results-container row no-gutters">
+      <div class="no-results text-center col">
+        No {{title.split(' ')[0]}} Parties
       </div>
-      <div class="col-4">
-        second
+    </div>
+  </template>
+
+  <template v-else v-for="(party, i) in parties">
+    <div class="party-list row no-gutters" :class="{'transfered': party.transfered}">
+      <div class="party-details col-md-4 col-sm-12">
+        <div class="party-date">
+          {{party.startDate | convertToPartyTime}}
+          <template v-if="party.startTime">
+            - {{party.startTime}}
+          </template>
+        </div>
+
+        <div class="party-name">
+          {{party.name}}
+        </div>
+
+        <div class="party-transfer" v-if="party.transfered">
+          Transfered to: <span>{{party.transfered}}</span>
+        </div>
       </div>
-      <div class="col-4">
-        third
+
+      <div class="col-md-4 col-sm-12 host-details">
+        Host: <span>{{party.host}}</span>
       </div>
-    </template>
-  </div>
+
+      <div class="col-md-4 col-sm-12 status-and-time">
+        <template v-if="!checkIfDateBefore(party.startDate)">
+          <Counter
+            :numbers="getTimeDiff(party.startDate)"
+            :after="['Days', 'Hours', 'Minutes']"
+            :time="2000"
+            connector=""
+          />
+        </template>
+
+        <template v-else>
+          <div class="party-status">
+            Status <span>{{getPartyStatus(party.partyStatus)}}</span>
+          </div>
+        </template>
+      </div>
+      <icon class="arrow-i" name="angle-right"></icon>
+      <icon class="info-i" name="info-circle"></icon>
+    </div>
+  </template>
 </div>

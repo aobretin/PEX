@@ -1,16 +1,31 @@
 $buttons: (
-
+  "default": (
+    background: color('btn-color'),
+    color: color('white')
+  ),
+  "address": (
+    background: color('white'),
+    color: color('medium-blue'),
+    border: '1px solid ' + color('darker-border-color')
+  )
 );
 
 .btn {
   // default styles here
-
+  min-width: 40px;
   @each $btn, $colors in $buttons {
     &.btn-#{$btn} {
       background: map-get($colors, "background");
       color: map-get($colors, "color");
-      &:hover {
-        background: darken(map-get($colors, "background"), 5%);
+      @if map-get($colors, "border") {
+        border: unquote(map-get($colors, "border"));
+      }
+      &:not(:disabled):hover {
+        @if map-get($colors, "hover") {
+          background: map-get($colors, "hover");
+        } @else {
+          background: darken(map-get($colors, "background"), 5%);
+        }
       }
     }
   }

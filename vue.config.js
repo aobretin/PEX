@@ -13,6 +13,7 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src'),
         'assets': resolve('src/assets'),
+        'config': resolve('src/modules/Root/styles/_importInModules.scss'),
         // our modules
         'CONSTANTS': resolve('src/constants'),
         'helpers': resolve('src/helpers'),
@@ -23,7 +24,8 @@ module.exports = {
         'router': resolve('src/router'),
         'store': resolve('src/store'),
         'translations': resolve('src/translations'),
-        'pages': resolve('src/pages')
+        'pages': resolve('src/pages'),
+        'filters': resolve('src/filters')
         // sub aliases
       }
     },

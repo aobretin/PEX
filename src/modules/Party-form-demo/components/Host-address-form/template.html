@@ -1,0 +1,113 @@
+<div>
+  <div class="row justify-content-between no-gutters mb35">
+    <Input-generator
+      v-for="(radio, i) in radios.inputs"
+      input="input"
+      inputType="radio"
+      :inputName="radio.name"
+      :inputLabel="radio.text"
+      :checkRadioValue="radio.value"
+      :customCallback="methods.toggleIfConsultantIsHost"
+      inputParentClass="col-6"
+      v-model="radios.value"
+    />
+  </div>
+
+  <div class="row justify-content-between no-gutters mb15">
+    <Input-generator
+      input="input"
+      inputLabel="FIRST NAME"
+      inputName="hostFirstName"
+      inputParentClass="col-sm-5"
+      v-model="data.host.firstName"
+      :validations="validations.host.firstName"
+    >
+      <span class="text-danger" v-if="!validations.host.firstName.required">
+        Party host firstname is required
+      </span>
+    </Input-generator>
+
+    <Input-generator
+      input="input"
+      inputLabel="LAST NAME"
+      inputName="hostLastName"
+      inputParentClass="col-sm-5"
+      v-model="data.host.lastName"
+      :validations="validations.host.lastName"
+    >
+      <span class="text-danger" v-if="!validations.host.lastName.required">
+        Party host lastname is required
+      </span>
+    </Input-generator>
+  </div>
+
+  <div class="row mb15">
+    <Input-generator
+      input="input"
+      inputType="mail"
+      inputLabel="EMAIL ADDRESS"
+      inputParentClass="col-sm-4"
+      inputName="hostEmail"
+      v-model="data.host.mail"
+      :validations="validations.host.mail"
+    >
+      <span class="text-danger" v-if="!validations.host.mail.email">
+        E-mail is not valid
+      </span>
+    </Input-generator>
+
+    <Input-generator
+      input="input"
+      inputType="phone"
+      inputLabel="PHONE"
+      inputParentClass="col-sm-4"
+      inputName="hostPhone"
+      v-model="data.host.phone"
+      :validations="validations.host.phone"
+    >
+      <span class="text-danger" v-if="!validations.host.phone.numeric">
+        Phone must contain only numbers
+      </span>
+    </Input-generator>
+
+    <Input-generator
+      input="input"
+      inputType="phone"
+      inputLabel="SOCIAL MEDIA"
+      inputParentClass="col-sm-4"
+      inputName="hostSocial"
+      v-model="data.host.social"
+    />
+  </div>
+
+  <div class="row">
+    <template v-if="addressOptions.length">
+      <Select-generator
+        selectName="hostAddress"
+        selectLabel="ADDRESS"
+        v-model="data.host.address"
+        selectParentClass="col-sm-12"
+        :options="addressOptions"
+        :customCallback="v => {
+          methods.syncAddressWithShipping(v);
+          methods.syncAddressWithLocation(v);
+        }"
+      />
+    </template>
+
+    <template v-else>
+      <Input-generator
+        input="input"
+        inputType="phone"
+        inputLabel="ADDRESS"
+        inputParentClass="col-sm-12"
+        inputName="hostAddress"
+        v-model="data.host.address"
+        :customCallback="v => {
+          methods.syncAddressWithShipping(v);
+          methods.syncAddressWithLocation(v);
+        }"
+      />
+    </template>
+  </div>
+</div>

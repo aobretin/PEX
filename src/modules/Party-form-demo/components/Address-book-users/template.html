@@ -1,0 +1,22 @@
+<div class="address-book-users-wrapper" v-bar>
+  <div class="address-book-users">
+    <ul v-if="users.length">
+      <li class="row justify-content-between" v-for="user in users">
+        <div class="user-details">
+          <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+          <div class="user-address">{{
+            _.isArray(user.address) ? 'Multiple addresses available' : user.address
+          }}</div>
+        </div>
+
+        <div class="user-cta">
+          <button @click="select(user)" class="btn btn-address">Select</button>
+        </div>
+      </li>
+    </ul>
+
+    <div class="no-results" v-else>
+      Your address book is empty
+    </div>
+  </div>
+</div>

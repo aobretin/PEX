@@ -1,0 +1,28 @@
+<div>
+  <label class="col-sm-2">Date and Time*</label>
+  <div class="row col-sm-10">
+    <Datepicker-generator
+      dateName="partyStartDate"
+      dateLabel="DATE"
+      dateParentClass="col-6"
+      v-model="data.startDate"
+      :validations="validations.startDate"
+    >
+      <span class="text-danger" v-if="!validations.startDate.required">
+        Party start date is required
+      </span>
+    </Datepicker-generator>
+
+    <Timepicker-generator
+      timeName="partyStartTime"
+      timeLabel="TIME"
+      timeParentClass="col-6"
+      v-model="data.startTime"
+      :validations="validations.startTime"
+    >
+      <span class="text-danger" v-if="!validations.startTime.required">
+        Party start time is required
+      </span>
+    </Timepicker-generator>
+  </div>
+</div>
