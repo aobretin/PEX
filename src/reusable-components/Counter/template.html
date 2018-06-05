@@ -1,16 +1,18 @@
 <div class="number-counter">
   <template v-for="(n, i) in numbers">
-    <animate-number
-      class="number"
-      :class="[`number-${i + 1}`]"
-      :duration="time"
-      :formatter="formatter"
-      :from="0"
-      :to="n"
-    />
-    <span class="number-after-word">
-      {{after[i]}}
-    </span>
+    <div class="no-wrapper">
+      <animate-number
+        class="number"
+        :class="[`number-${i + 1}`]"
+        :duration="time"
+        :formatter="formatter"
+        :from="0"
+        :to="n"
+      />
+      <span class="number-after-word">
+        {{after[i]}}
+      </span>
+    </div>
     <span class="number-connector" v-if="i !== numbers.length - 1">
       {{connector}}
     </span>

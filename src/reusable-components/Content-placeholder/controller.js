@@ -39,7 +39,7 @@ export default {
 
     loadWhen: {
       type: Boolean,
-      default: true
+      default: false
     },
     animated: {
       type: Boolean,
@@ -48,6 +48,9 @@ export default {
     rounded: {
       type: Boolean,
       default: false
+    },
+    containerClass: {
+      type: String
     },
 
     styles: {

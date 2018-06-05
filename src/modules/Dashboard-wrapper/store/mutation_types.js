@@ -1,0 +1,4 @@
+export default {
+  MODIFY_PARTY: 'MODIFY_PARTY',
+  MODIFY_LOADED: 'MODIFY_LOADED'
+}

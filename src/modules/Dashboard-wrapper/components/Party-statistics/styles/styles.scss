@@ -1,0 +1,6 @@
+/deep/ .circle canvas {
+  @media screen and (max-width: get-media-breakpoint("lg")) {
+    width: 150px!important;
+    height: 150px!important;
+  }
+}

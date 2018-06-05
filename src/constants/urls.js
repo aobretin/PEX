@@ -3,7 +3,7 @@ export const URLS = {
   PARTIES: {
     GET_PARTIES: '/parties'
   },
-  ADDRESS_BOOK: {
-    GET_USERS: '/address-book-users'
+  USERS: {
+    GET_USERS: '/users'
   }
 }

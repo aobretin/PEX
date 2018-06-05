@@ -1,3 +1,5 @@
+@import '../config/buttons';
+
 $buttons: (
   "default": (
     background: color('btn-color'),
@@ -7,12 +9,26 @@ $buttons: (
     background: color('white'),
     color: color('medium-blue'),
     border: '1px solid ' + color('darker-border-color')
+  ),
+  "party-action": (
+    background: rgba(0,0,0,.1),
+    color: color('white'),
+    border: '1px solid ' + color('white')
+  ),
+  "host-action": (
+    background: color('white'),
+    color: color('darker-text-color'),
+    border: '1px solid ' + color('medium-blue')
   )
 );
 
 .btn {
   // default styles here
   min-width: 40px;
+  &.go-full {
+    padding: $btn-padding-y 0;
+    width: 100%;
+  }
   @each $btn, $colors in $buttons {
     &.btn-#{$btn} {
       background: map-get($colors, "background");

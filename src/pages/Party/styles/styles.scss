@@ -1,0 +1,24 @@
+.nav-pills {
+  background: color('nav-grey');
+  padding-top: 3px;
+  .nav-link {
+    font-size: 18px;
+    padding: 15px 35px;
+    border: solid transparent;
+    border-width: 1px 1px 0 1px;
+    &.back-link {
+      display: flex;
+      align-items: center;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    &.active {
+      background-color: color('white');
+      color: color('darker-text-color');
+      border: solid color('border-color');
+      border-width: 1px 1px 0 1px;
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}

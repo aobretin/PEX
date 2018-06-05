@@ -21,5 +21,19 @@ const {
 )
 
 export default {
-  name: MODULE_NAME
+  name: MODULE_NAME,
+  data() {
+    const {
+      options: {
+        routes
+      }
+    } = this.$router;
+    const {
+      children
+    } = routes.find(route => route.name === PARTY);
+
+    return {
+      partyRoutes: children.slice(0, children.length - 1)
+    }
+  }
 }

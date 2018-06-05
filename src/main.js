@@ -18,6 +18,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 // icons
 import 'vue-awesome/icons/angle-right';
+import 'vue-awesome/icons/angle-left';
 import 'vue-awesome/icons/angle-down';
 import 'vue-awesome/icons/angle-up';
 import 'vue-awesome/icons/calendar';
@@ -33,7 +34,7 @@ Vue.prototype.$msgBox = MessageBox;
 Vue.prototype.$message = Message;
 Vue.prototype.loading = Loading;
 
-vueModules.forEach(module => Array.isArray(module) ? Vue.use(...module) : Vue.use(module));
+vueModules.forEach(module => _.isArray(module) ? Vue.use(...module) : Vue.use(module));
 
 Vue.config.productionTip = false;
 

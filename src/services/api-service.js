@@ -9,6 +9,8 @@ const {
 } = URLS;
 
 export const req = async args => {
+  let processedUrl = '';
+
   const {
     REQUEST: {
       url,
@@ -18,14 +20,35 @@ export const req = async args => {
     },
     data = null,
     params = null,
-    appendUrl = {},
+    appendUrl = {traditional: false},
     headers = {'Content-Type': 'application/x-www-form-urlencoded'},
     ...otherParams
-  } = args,
-    paramsSerializer = params => Qs.stringify(params, {arrayFormat: 'brackets'});
+  } = args;
+  const {
+    traditional,
+    ...urlParams
+  } = appendUrl;
+  const paramsSerializer = params => Qs.stringify(params, {arrayFormat: 'brackets'});
+
+  if (Object.keys(urlParams).length) {
+    if (traditional) {
+      processedUrl = Object.entries(urlParams).reduce((soFarUrl, currentEntry, i) => {
+        const [
+          key,
+          value
+        ] = currentEntry;
+
+        return i === 0 ? `${url}?${key}=${value}` : `${soFarUrl}&${key}=${value}`;
+      }, '');
+    } else {
+      processedUrl = `${url}/${[...Object.values(urlParams)].join('/')}`;
+    }
+  } else {
+    processedUrl = url;
+  }
 
   const res = await Axios.request({
-    url: `${url}${Object.keys(appendUrl).length ? '/' + [...Object.values(appendUrl)].join('/') : ''}`,
+    url: processedUrl,
     baseURL,
     method,
     headers,

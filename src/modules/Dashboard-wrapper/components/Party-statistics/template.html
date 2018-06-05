@@ -1,0 +1,37 @@
+<Content-placeholder
+  :loadWhen="loaded"
+  :withText="false"
+  :withHeading="false"
+  :styles="{
+    minHeight: '600px'
+  }"
+  containerClass="row"
+  withImage
+>
+  <div class="col-sm-4">
+    <Circle-loader-generator
+      :size="250"
+      :progress="45"
+    >
+      Progress is: <Counter :numbers="[45]" :after="['%']" />
+    </Circle-loader-generator>
+  </div>
+
+  <div class="col-sm-4">
+    <Circle-loader-generator
+      :size="250"
+      :progress="85"
+    >
+      Progress is: <Counter :numbers="[85]" :after="['%']" />
+    </Circle-loader-generator>
+  </div>
+
+  <div class="col-sm-4">
+    <Circle-loader-generator
+      :size="250"
+      :progress="25"
+    >
+      Progress is: <Counter :numbers="[25]" :after="['%']" />
+    </Circle-loader-generator>
+  </div>
+</Content-placeholder>

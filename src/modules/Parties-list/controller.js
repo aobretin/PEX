@@ -87,6 +87,8 @@ export default {
       }, parties);
 
       this.$store.dispatch(modifyParties, parties);
+    }).catch(() => {
+      this.$store.dispatch(modifyParties, parties);
     });
   },
   components: {

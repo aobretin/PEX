@@ -20,35 +20,42 @@ export const PARTIES_MOCK_SCHEMA = {
     schema: array().of(
       object().shape(
         {
+          id: string().required(),
           name: string().required(),
           startDate: string().required(),
           startTime: mixed(),
           host: string().required(),
           status: string().required(),
           partyStatus: string().required(),
-          transfered: mixed()
+          transfered: mixed(),
+          hostId: mixed(),
+          type: mixed()
         }
       )
     ),
     query: `res.data[].{
+        id: id,
         name: name,
         startDate: startDate,
         startTime: startTime,
         host: host,
         status: status,
         partyStatus: partyStatus,
-        transfered: transfered
+        transfered: transfered,
+        hostId: hostId,
+        type: type
     }`
   }
 }
 
-export const ADDRESS_BOOK_USERS_MOCK = {
+export const USERS_MOCK_SCHEMA = {
   GET_USERS: {
-    url: URLS.ADDRESS_BOOK.GET_USERS,
+    url: URLS.USERS.GET_USERS,
     method: 'get',
     schema: array().of(
       object().shape(
         {
+          id: string().required(),
           firstName: string().required(),
           lastName: string().required(),
           address: mixed().concat(
@@ -62,9 +69,10 @@ export const ADDRESS_BOOK_USERS_MOCK = {
       )
     ),
     query: `res.data[].{
+        id: id,
         firstName: firstName,
         lastName: lastName,
-        email: email,
+        mail: mail,
         address: address,
         phone: phone,
         social: social

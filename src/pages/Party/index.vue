@@ -9,5 +9,6 @@
 </script>
 
 <style lang="scss">
+  @import '~config';
   @import './styles/styles.scss';
 </style>

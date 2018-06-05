@@ -10,7 +10,7 @@
   </template>
 
   <template v-else v-for="(party, i) in parties">
-    <div class="party-list row no-gutters" :class="{'transfered': party.transfered}">
+    <div @click="goToParty(party)" class="party-list row no-gutters" :class="{'transfered': party.transfered}">
       <div class="party-details col-md-4 col-sm-12">
         <div class="party-date">
           {{party.startDate | convertToPartyTime}}

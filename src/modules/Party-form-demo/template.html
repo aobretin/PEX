@@ -102,10 +102,10 @@
 
     <div class="col-12 text-center">
       <button type="button" class="btn btn-default" :disabled="$v.partyDemoData.$invalid">
-        Create the Party
+        {{bottomCTAsInfo.submitText}}
       </button>
 
-      <router-link class="back-btn mt20" to="/">Cancel</router-link>
+      <router-link class="back-btn mt20" :to="bottomCTAsInfo.cancelLink">Cancel</router-link>
     </div>
   </form>
 </div>

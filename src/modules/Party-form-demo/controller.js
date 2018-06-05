@@ -16,7 +16,8 @@ import PartyLocation from './components/Party-location';
 import {
   GLOBAL_NAMES,
   FORMS,
-  ADDRESS_BOOK_USERS_MOCK
+  USERS_MOCK_SCHEMA,
+  PARTIES_MOCK_SCHEMA
 } from 'CONSTANTS';
 
 const {
@@ -31,7 +32,11 @@ const {
 
 const {
   GET_USERS
-} = ADDRESS_BOOK_USERS_MOCK;
+} = USERS_MOCK_SCHEMA;
+
+const {
+  GET_PARTIES
+} = PARTIES_MOCK_SCHEMA;
 
 const {
   MODULE_NAME,
@@ -47,6 +52,10 @@ export default {
   name: MODULE_NAME,
   data() {
     return {
+      bottomCTAsInfo: {
+        submitText: 'Create the Party',
+        cancelLink: '/'
+      },
       addressBookIsOpened: false,
       partyDemoData: {...PARTY_FORM.values},
       typeOptions: [...PARTY_FORM.typeOptions],
@@ -61,14 +70,22 @@ export default {
       addressBookUsers
     })
   },
-  validations: {
-    partyDemoData: {...PARTY_FORM.validations}
+  validations() {
+    let partyDemoData = {...PARTY_FORM.validations};
+
+    if (this.partyDemoData.type === 'classic') {
+      partyDemoData.startTime = {};
+    }
+
+    return {
+      partyDemoData
+    }
   },
   methods: {
     selectUser({
       firstName,
       lastName,
-      email: mail,
+      mail,
       address: unprocessedAddress,
       phone,
       social
@@ -110,10 +127,14 @@ export default {
     getAddressBookUsers() {
       const loading = this.loading.service({
         lock: true
-      })
+      });
 
       this.service.req(GET_USERS).then(users => {
         this.$store.dispatch(modifyAddressBookUsers, users);
+        this.toggleAdressBook();
+        loading.close();
+      }).catch(() => {
+        this.$store.dispatch(modifyAddressBookUsers, []);
         this.toggleAdressBook();
         loading.close();
       });
@@ -212,6 +233,49 @@ export default {
 
     if (!this.$store.state[MODULE_NAME]) {
       this.$store.registerModule(MODULE_NAME, store);
+    }
+  },
+  async mounted() {
+    if (this.partyId) {
+      const loading = this.loading.service({
+        lock: true
+      });
+
+      const [party] = await this.service.req(GET_PARTIES, {
+        appendUrl: {
+          id: this.partyId
+        }
+      });
+
+      const [host] = await this.service.req(GET_USERS, {
+        appendUrl: {
+          id: party.hostId
+        }
+      });
+
+      this.partyDemoData = {
+        ...PARTY_FORM.values,
+        ...party,
+        host
+      }
+
+      this.syncAddressWithShipping(host.address).then(() => {
+        this.toggleWhichShippingAddress(this.shippingRadios.value);
+      });
+
+      this.syncAddressWithLocation(host.address).then(() => {
+        this.toggleWhichLocationAddress(this.locationRadios.value);
+      });
+
+      this.bottomCTAsInfo.submitText = 'Edit the Party';
+      this.bottomCTAsInfo.cancelLink = {
+        name: 'Dashboard',
+        params: {
+          partyId: this.partyId
+        }
+      };
+
+      loading.close();
     }
   },
   props: {

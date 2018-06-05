@@ -33,7 +33,20 @@ export default {
   methods: {
     checkIfDateBefore,
     getTimeDiff,
-    getPartyStatus
+    getPartyStatus,
+    goToParty({
+      id,
+      transfered
+    }) {
+      if (transfered) return false;
+
+      this.$router.push({
+        name: 'Dashboard',
+        params: {
+          partyId: id
+        }
+      })
+    }
   },
   props: {
     title: {

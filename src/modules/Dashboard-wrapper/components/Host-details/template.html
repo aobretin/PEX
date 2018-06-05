@@ -1,0 +1,61 @@
+<Content-placeholder
+  :loadWhen="loaded"
+  :withText="false"
+  :withHeading="false"
+  withImage
+  :styles="{
+    minHeight: '600px'
+  }"
+>
+<div class="host-details row no-gutters">
+  <div class="col-sm-6 segment party-details">
+    <h1 class="party-name mb40">{{party.name}}</h1>
+    <Counter
+      class="time-until-party-start mb40"
+      :numbers="getTimeDiff(party.startDate)"
+      :after="['Days', 'Hours', 'Minutes']"
+      :time="2000"
+      connector=":"
+    />
+    <div class="party-actions">
+      <button @click="editParty(party.id)" class="btn btn-party-action">Edit</button>
+      <button class="btn btn-party-action">Cancel</button>
+      <button class="btn btn-party-action">Transfer party</button>
+      <button class="btn btn-party-action">Duplicate party</button>
+    </div>
+  </div>
+  <div class="col-sm-3 segment host">
+    <span class="host-abbv">
+      {{hostName | makeNameAbbv}}
+    </span>
+
+    <div class="host-data">
+      <div class="data-row mb15">
+        <div class="label">HOST</div>
+        <div class="data">{{hostName}}</div>
+      </div>
+
+      <div class="data-row mb15">
+        <div class="label">TELEPHONE</div>
+        <div class="data">{{party.host.phone}}</div>
+      </div>
+
+      <div class="data-row">
+        <div class="label">EMAIL</div>
+        <div class="data">{{party.host.mail}}</div>
+      </div>
+    </div>
+
+    <div class="host-actions">
+      <button class="btn btn-host-action go-full mb10">Share party link</button>
+      <button class="btn btn-host-action go-full">View Host Profile</button>
+    </div>
+  </div>
+  <div class="col-sm-3 segment directions">
+    <div class="directions-segment">
+      {{party.host.address}}
+      <button class="btn btn-party-action go-full mt10">Get Directions</button>
+    </div>
+  </div>
+</div>
+</Content-placeholder>

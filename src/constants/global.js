@@ -35,6 +35,14 @@ export const GLOBAL_NAMES = {
         _SHIPPING_ADDRESS   : 'Shipping-address',
         _PARTY_LOCATION     : 'Party-location'
       }
+    },
+    DASHBOARD_WRAPPER: {
+      name: 'Dashboard-wrapper',
+      components: {
+        _HOST_DETAILS: 'Host-details',
+        _PARTY_STATISTICS: 'Party-statistics',
+        _TASKLIST: 'Tasklist'
+      }
     }
   },
 
@@ -47,13 +55,14 @@ export const GLOBAL_NAMES = {
   },
 
   REUSABLES: {
-    DIALOG_GENERATOR      : 'Dialog-generator',
-    COUNTER               : 'Counter',
-    CONTENT_PLACEHOLDER   : 'Content-placeholder',
-    INPUT_GENERATOR       : 'Input-generator',
-    SELECT_GENERATOR      : 'Select-generator',
-    DATEPICKER_GENERATOR  : 'Datepicker-generator',
-    AUTOCOMPLETE_GENERATOR: 'Autocomplete-generator',
-    TIMEPICKER_GENERATOR  : 'Timepicker-generator'
+    CIRCLE_LOADER_GENERATOR : 'Circle-loader-generator',
+    DIALOG_GENERATOR        : 'Dialog-generator',
+    COUNTER                 : 'Counter',
+    CONTENT_PLACEHOLDER     : 'Content-placeholder',
+    INPUT_GENERATOR         : 'Input-generator',
+    SELECT_GENERATOR        : 'Select-generator',
+    DATEPICKER_GENERATOR    : 'Datepicker-generator',
+    AUTOCOMPLETE_GENERATOR  : 'Autocomplete-generator',
+    TIMEPICKER_GENERATOR    : 'Timepicker-generator'
   }
 }

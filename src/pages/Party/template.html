@@ -1,32 +1,24 @@
-<div>
-  <ul class="nav nav-pills nav-fill">
+<div class="party-home">
+  <ul class="nav nav-pills justify-content-center">
     <li class="nav-item">
-      <router-link
-        :to="{
-          name: 'Dashboard',
-          params: {
-            partyId: $route.params.partyId
-          }
-        }"
-        class="nav-link"
-        active-class="active"
-        exact
-      >
-        Dashboard
+      <router-link class="nav-link back-link" to="/">
+        <icon class="arrow-i" name="angle-left"></icon>
+        My parties
       </router-link>
     </li>
-    <li class="nav-item">
+    <li v-for="(route, i) in partyRoutes" :key="i" class="nav-item">
       <router-link
         :to="{
-          name: 'Guestlist',
+          name: `${route.name}`,
           params: {
             partyId: $route.params.partyId
           }
         }"
         class="nav-link"
         active-class="active"
+        :exact="i === 0"
       >
-        Guestlist
+        {{route.name}}
       </router-link>
     </li>
   </ul>
