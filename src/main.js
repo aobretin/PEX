@@ -4,6 +4,7 @@ import store from 'store';
 import vueModules from './vue-base-use-config';
 import _ from 'lodash';
 import localforage from 'localforage';
+import runOverwrites from 'overwrites';
 import {
   Notification,
   MessageBox,
@@ -35,6 +36,7 @@ Vue.prototype.$message = Message;
 Vue.prototype.loading = Loading;
 
 vueModules.forEach(module => _.isArray(module) ? Vue.use(...module) : Vue.use(module));
+runOverwrites();
 
 Vue.config.productionTip = false;
 

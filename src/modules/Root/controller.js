@@ -18,5 +18,13 @@ const {
 )
 
 export default {
-  name: MODULE_NAME
+  name: MODULE_NAME,
+  mounted() {
+    this.$translate.setLocales({
+        en_EN: {
+        }
+    });
+    this.$translate.setLang('en_EN');
+    console.log(this.$translate);
+  }
 }

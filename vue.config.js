@@ -25,7 +25,8 @@ module.exports = {
         'store': resolve('src/store'),
         'translations': resolve('src/translations'),
         'pages': resolve('src/pages'),
-        'filters': resolve('src/filters')
+        'filters': resolve('src/filters'),
+        'overwrites': resolve('src/overwrites')
         // sub aliases
       }
     },
